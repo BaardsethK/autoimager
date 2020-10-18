@@ -1,0 +1,8 @@
+.env
+env/
+autoimager/
+*.png
+*.mp3
+*.avi
+*.mp4
+_pycache_
