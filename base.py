@@ -62,12 +62,23 @@ def audio_plotter():
     pictureframes = math.floor(12 * duration)
     signal = soundfile.readframes(-1)
     signal = np.fromstring(signal, 'Int16')
+    split_list = chunk_list(signal, round(len(signal) / pictureframes))
+    print(split_list)
     print(duration, pictureframes)
-    print(signal)
     plt.figure(1)
     plt.title("Waveform")
     plt.plot(signal)
     plt.show()
+
+def chunk_list(lst, chunksize):
+    out = []
+    last = 0
+
+    while last <= len(lst):
+        out.append(sum(lst[last:last+chunksize]))
+        last += chunksize
+
+    return out
     
 
 if __name__ == "__main__":
